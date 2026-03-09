@@ -42,7 +42,7 @@ const PinDialog = ({ open, mode, userId, onSuccess, onClose }: PinDialogProps) =
   const handleVerify = async () => {
     if (pin.length !== 4) return;
     setLoading(true);
-    const { data } = await (supabase as any).from("user_pins").select("pin").eq("user_id", userId).single();
+    const { data } = await supabase.from("user_pins").select("pin").eq("user_id", userId).maybeSingle();
     setLoading(false);
     if (data?.pin === pin) { reset(); onSuccess(); }
     else { toast({ title: "Incorrect PIN", variant: "destructive" }); setPin(""); }
