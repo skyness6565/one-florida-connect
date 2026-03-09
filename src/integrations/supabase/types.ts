@@ -14,6 +14,162 @@ export type Database = {
   }
   public: {
     Tables: {
+      alerts: {
+        Row: {
+          created_at: string
+          id: string
+          message: string
+          read: boolean | null
+          title: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message: string
+          read?: boolean | null
+          title: string
+          type?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string
+          read?: boolean | null
+          title?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      beneficiaries: {
+        Row: {
+          account_number: string
+          bank_name: string
+          created_at: string
+          id: string
+          name: string
+          nickname: string | null
+          routing_code: string | null
+          user_id: string
+        }
+        Insert: {
+          account_number: string
+          bank_name: string
+          created_at?: string
+          id?: string
+          name: string
+          nickname?: string | null
+          routing_code?: string | null
+          user_id: string
+        }
+        Update: {
+          account_number?: string
+          bank_name?: string
+          created_at?: string
+          id?: string
+          name?: string
+          nickname?: string | null
+          routing_code?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      crypto_holdings: {
+        Row: {
+          amount: number
+          avg_price: number
+          created_at: string
+          id: string
+          symbol: string
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          avg_price: number
+          created_at?: string
+          id?: string
+          symbol: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          avg_price?: number
+          created_at?: string
+          id?: string
+          symbol?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      investments: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          plan_name: string
+          roi: number
+          status: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          plan_name: string
+          roi: number
+          status?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          plan_name?: string
+          roi?: number
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      loans: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          interest_rate: number
+          monthly_payment: number | null
+          purpose: string | null
+          status: string
+          term_months: number
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          interest_rate?: number
+          monthly_payment?: number | null
+          purpose?: string | null
+          status?: string
+          term_months: number
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          interest_rate?: number
+          monthly_payment?: number | null
+          purpose?: string | null
+          status?: string
+          term_months?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           account_number: string | null
@@ -65,6 +221,117 @@ export type Database = {
           updated_at?: string
           user_id?: string
           username?: string
+        }
+        Relationships: []
+      }
+      support_tickets: {
+        Row: {
+          created_at: string
+          id: string
+          message: string
+          priority: string | null
+          response: string | null
+          status: string
+          subject: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message: string
+          priority?: string | null
+          response?: string | null
+          status?: string
+          subject: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string
+          priority?: string | null
+          response?: string | null
+          status?: string
+          subject?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      transactions: {
+        Row: {
+          amount: number
+          category: string
+          created_at: string
+          fee: number | null
+          id: string
+          metadata: Json | null
+          note: string | null
+          recipient_account: string | null
+          recipient_bank: string | null
+          recipient_name: string | null
+          routing_code: string | null
+          sender_account: string | null
+          status: string
+          transaction_id: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          category?: string
+          created_at?: string
+          fee?: number | null
+          id?: string
+          metadata?: Json | null
+          note?: string | null
+          recipient_account?: string | null
+          recipient_bank?: string | null
+          recipient_name?: string | null
+          routing_code?: string | null
+          sender_account?: string | null
+          status?: string
+          transaction_id: string
+          type: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          category?: string
+          created_at?: string
+          fee?: number | null
+          id?: string
+          metadata?: Json | null
+          note?: string | null
+          recipient_account?: string | null
+          recipient_bank?: string | null
+          recipient_name?: string | null
+          routing_code?: string | null
+          sender_account?: string | null
+          status?: string
+          transaction_id?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_pins: {
+        Row: {
+          created_at: string
+          id: string
+          pin: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          pin: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          pin?: string
+          user_id?: string
         }
         Relationships: []
       }
