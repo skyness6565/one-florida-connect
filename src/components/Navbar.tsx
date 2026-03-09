@@ -1,5 +1,6 @@
 import { Lock, Globe, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -28,12 +29,12 @@ const Navbar = () => {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
-          <button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-sm font-semibold px-5 py-2 rounded-lg transition-colors">
+          <Link to="/register" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground text-sm font-semibold px-5 py-2 rounded-lg transition-colors">
             Register
-          </button>
-          <button className="border border-primary-foreground/30 hover:bg-primary-foreground/10 text-primary-foreground text-sm font-medium px-5 py-2 rounded-lg transition-colors">
+          </Link>
+          <Link to="/login" className="border border-primary-foreground/30 hover:bg-primary-foreground/10 text-primary-foreground text-sm font-medium px-5 py-2 rounded-lg transition-colors">
             Login
-          </button>
+          </Link>
           <div className="relative">
             <button
               onClick={() => setAboutOpen(!aboutOpen)}
@@ -85,12 +86,12 @@ const Navbar = () => {
 
       {menuOpen && (
         <div className="md:hidden border-t border-primary-foreground/10 pb-4">
-          <button className="block w-full text-left px-6 py-3 text-primary-foreground font-semibold hover:bg-primary-foreground/10 text-sm">
+          <Link to="/register" className="block w-full text-left px-6 py-3 text-primary-foreground font-semibold hover:bg-primary-foreground/10 text-sm">
             Register
-          </button>
-          <button className="block w-full text-left px-6 py-3 text-primary-foreground/90 hover:bg-primary-foreground/10 text-sm">
+          </Link>
+          <Link to="/login" className="block w-full text-left px-6 py-3 text-primary-foreground/90 hover:bg-primary-foreground/10 text-sm">
             Login
-          </button>
+          </Link>
           <div className="border-t border-primary-foreground/10 mt-2 pt-2 px-6">
             <p className="text-primary-foreground/50 text-xs font-bold tracking-wider mb-2">ABOUT US</p>
             {aboutItems.map((item) => (
