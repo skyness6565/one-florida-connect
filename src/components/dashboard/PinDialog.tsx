@@ -31,7 +31,7 @@ const PinDialog = ({ open, mode, userId, onSuccess, onClose }: PinDialogProps) =
       return;
     }
     setLoading(true);
-    const { error } = await (supabase as any).from("user_pins").insert({ user_id: userId, pin });
+    const { error } = await supabase.from("user_pins").upsert({ user_id: userId, pin }, { onConflict: "user_id" });
     setLoading(false);
     if (error) { toast({ title: "Error setting PIN", variant: "destructive" }); return; }
     toast({ title: "Transfer PIN created successfully" });
