@@ -71,8 +71,9 @@ const Dashboard = () => {
 
   const handleTransferComplete = (txn: any) => {
     setReceiptData(txn);
-    setActiveDialog("receipt");
+    setActiveDialog(null);
     refreshProfile();
+    setTimeout(() => setActiveDialog("receipt"), 300);
   };
 
   const handleLogout = async () => { await supabase.auth.signOut(); navigate("/"); };
