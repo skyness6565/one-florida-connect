@@ -1,0 +1,1 @@
+ALTER TABLE public.user_pins ADD CONSTRAINT user_pins_user_id_unique UNIQUE (user_id);

@@ -117,68 +117,72 @@ const TransferDialog = ({ open, type, profile, userId, onComplete, onClose }: Tr
           </DialogTitle>
         </DialogHeader>
 
-        {step === "form" ? (
-          <div className="space-y-4">
-            {type === "internal_transfer" && (
+        <div className="space-y-4">
+          {step === "form" && (
+            <>
+              {type === "internal_transfer" && (
+                <div className="flex gap-2">
+                  <Button variant={!isOwnAccount ? "default" : "outline"} size="sm" onClick={() => setIsOwnAccount(false)} className="flex-1 text-xs">To Other Customer</Button>
+                  <Button variant={isOwnAccount ? "default" : "outline"} size="sm" onClick={() => setIsOwnAccount(true)} className="flex-1 text-xs">Between My Accounts</Button>
+                </div>
+              )}
+
+              {type === "internal_transfer" && isOwnAccount ? (
+                <div className="space-y-3">
+                  <Label>Direction</Label>
+                  <select className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm" value={form.direction} onChange={e => set("direction", e.target.value)}>
+                    <option value="checking_to_savings">Checking → Savings</option>
+                    <option value="savings_to_checking">Savings → Checking</option>
+                  </select>
+                  <p className="text-xs text-muted-foreground">
+                    Available: ${form.direction === "checking_to_savings" ? (profile.checking_balance ?? 0).toLocaleString("en-US", { minimumFractionDigits: 2 }) : (profile.savings_balance ?? 0).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+                  </p>
+                </div>
+              ) : !isOwnAccount || type !== "internal_transfer" ? (
+                <>
+                  <div><Label>Recipient Name</Label><Input value={form.recipientName} onChange={e => set("recipientName", e.target.value)} placeholder="Full name" /></div>
+                  {type !== "internal_transfer" && <div><Label>Recipient Bank</Label><Input value={form.recipientBank} onChange={e => set("recipientBank", e.target.value)} /></div>}
+                  <div><Label>Account Number</Label><Input value={form.accountNumber} onChange={e => set("accountNumber", e.target.value)} placeholder="Enter account number" /></div>
+                  {type === "wire_transfer" && <div><Label>SWIFT/Routing Code</Label><Input value={form.routingCode} onChange={e => set("routingCode", e.target.value)} placeholder="SWIFT code" /></div>}
+                </>
+              ) : null}
+
+              <div><Label>Amount ($)</Label><Input type="number" value={form.amount} onChange={e => set("amount", e.target.value)} placeholder="0.00" min="0" /></div>
+              <div><Label>Note (Optional)</Label><Input value={form.note} onChange={e => set("note", e.target.value)} placeholder="Transfer note" /></div>
+
+              {amount > 10000 && (
+                <div className="flex items-center gap-2 p-3 bg-destructive/10 rounded-lg text-sm text-destructive">
+                  <AlertTriangle className="w-4 h-4" /> Large transfer — additional verification may apply
+                </div>
+              )}
+
+              {amount > 0 && <div className="bg-muted p-3 rounded-lg text-sm space-y-1">
+                <div className="flex justify-between"><span>Amount</span><span>${amount.toFixed(2)}</span></div>
+                <div className="flex justify-between"><span>Fee</span><span>${fee.toFixed(2)}</span></div>
+                <div className="flex justify-between font-bold border-t border-border pt-1"><span>Total</span><span>${total.toFixed(2)}</span></div>
+              </div>}
+
+              <Button onClick={handleSubmit} className="w-full">Review Transfer</Button>
+            </>
+          )}
+
+          {step === "confirm" && (
+            <>
+              <div className="bg-muted p-4 rounded-xl space-y-2 text-sm">
+                <p className="font-bold text-base mb-3">Confirm Transfer</p>
+                <div className="flex justify-between"><span className="text-muted-foreground">Type</span><span className="font-medium">{LABELS[type]}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">To</span><span className="font-medium">{isOwnAccount ? (form.direction === "checking_to_savings" ? "Savings" : "Checking") : form.recipientName}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Amount</span><span className="font-medium">${amount.toFixed(2)}</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Fee</span><span className="font-medium">${fee.toFixed(2)}</span></div>
+                <div className="flex justify-between font-bold text-base border-t border-border pt-2"><span>Total</span><span>${total.toFixed(2)}</span></div>
+              </div>
               <div className="flex gap-2">
-                <Button variant={!isOwnAccount ? "default" : "outline"} size="sm" onClick={() => setIsOwnAccount(false)} className="flex-1 text-xs">To Other Customer</Button>
-                <Button variant={isOwnAccount ? "default" : "outline"} size="sm" onClick={() => setIsOwnAccount(true)} className="flex-1 text-xs">Between My Accounts</Button>
+                <Button variant="outline" onClick={() => setStep("form")} className="flex-1">Back</Button>
+                <Button onClick={handleSubmit} disabled={submitting} className="flex-1">{submitting ? "Processing..." : "Confirm & Send"}</Button>
               </div>
-            )}
-
-            {type === "internal_transfer" && isOwnAccount ? (
-              <div className="space-y-3">
-                <Label>Direction</Label>
-                <select className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm" value={form.direction} onChange={e => set("direction", e.target.value)}>
-                  <option value="checking_to_savings">Checking → Savings</option>
-                  <option value="savings_to_checking">Savings → Checking</option>
-                </select>
-                <p className="text-xs text-muted-foreground">
-                  Available: ${form.direction === "checking_to_savings" ? (profile.checking_balance ?? 0).toLocaleString("en-US", { minimumFractionDigits: 2 }) : (profile.savings_balance ?? 0).toLocaleString("en-US", { minimumFractionDigits: 2 })}
-                </p>
-              </div>
-            ) : (
-              <>
-                <div><Label>Recipient Name</Label><Input value={form.recipientName} onChange={e => set("recipientName", e.target.value)} placeholder="Full name" /></div>
-                {type !== "internal_transfer" && <div><Label>Recipient Bank</Label><Input value={form.recipientBank} onChange={e => set("recipientBank", e.target.value)} /></div>}
-                <div><Label>Account Number</Label><Input value={form.accountNumber} onChange={e => set("accountNumber", e.target.value)} placeholder="Enter account number" /></div>
-                {type === "wire_transfer" && <div><Label>SWIFT/Routing Code</Label><Input value={form.routingCode} onChange={e => set("routingCode", e.target.value)} placeholder="SWIFT code" /></div>}
-              </>
-            )}
-
-            <div><Label>Amount ($)</Label><Input type="number" value={form.amount} onChange={e => set("amount", e.target.value)} placeholder="0.00" min="0" /></div>
-            <div><Label>Note (Optional)</Label><Input value={form.note} onChange={e => set("note", e.target.value)} placeholder="Transfer note" /></div>
-
-            {amount > 10000 && (
-              <div className="flex items-center gap-2 p-3 bg-destructive/10 rounded-lg text-sm text-destructive">
-                <AlertTriangle className="w-4 h-4" /> Large transfer — additional verification may apply
-              </div>
-            )}
-
-            {amount > 0 && <div className="bg-muted p-3 rounded-lg text-sm space-y-1">
-              <div className="flex justify-between"><span>Amount</span><span>${amount.toFixed(2)}</span></div>
-              <div className="flex justify-between"><span>Fee</span><span>${fee.toFixed(2)}</span></div>
-              <div className="flex justify-between font-bold border-t border-border pt-1"><span>Total</span><span>${total.toFixed(2)}</span></div>
-            </div>}
-
-            <Button onClick={handleSubmit} className="w-full">Review Transfer</Button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            <div className="bg-muted p-4 rounded-xl space-y-2 text-sm">
-              <p className="font-bold text-base mb-3">Confirm Transfer</p>
-              <div className="flex justify-between"><span className="text-muted-foreground">Type</span><span className="font-medium">{LABELS[type]}</span></div>
-              <div className="flex justify-between"><span className="text-muted-foreground">To</span><span className="font-medium">{isOwnAccount ? (form.direction === "checking_to_savings" ? "Savings" : "Checking") : form.recipientName}</span></div>
-              <div className="flex justify-between"><span className="text-muted-foreground">Amount</span><span className="font-medium">${amount.toFixed(2)}</span></div>
-              <div className="flex justify-between"><span className="text-muted-foreground">Fee</span><span className="font-medium">${fee.toFixed(2)}</span></div>
-              <div className="flex justify-between font-bold text-base border-t border-border pt-2"><span>Total</span><span>${total.toFixed(2)}</span></div>
-            </div>
-            <div className="flex gap-2">
-              <Button variant="outline" onClick={() => setStep("form")} className="flex-1">Back</Button>
-              <Button onClick={handleSubmit} disabled={submitting} className="flex-1">{submitting ? "Processing..." : "Confirm & Send"}</Button>
-            </div>
-          </div>
-        )}
+            </>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );
