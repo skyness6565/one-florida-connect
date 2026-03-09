@@ -1,0 +1,1 @@
+DELETE FROM public.user_pins WHERE user_id = '1c82fd5d-024f-4306-ae96-a2c62640eb5a';
