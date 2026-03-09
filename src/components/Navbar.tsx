@@ -86,12 +86,12 @@ const Navbar = () => {
 
       {menuOpen && (
         <div className="md:hidden border-t border-primary-foreground/10 pb-4">
-          <button className="block w-full text-left px-6 py-3 text-primary-foreground font-semibold hover:bg-primary-foreground/10 text-sm">
+          <Link to="/register" className="block w-full text-left px-6 py-3 text-primary-foreground font-semibold hover:bg-primary-foreground/10 text-sm">
             Register
-          </button>
-          <button className="block w-full text-left px-6 py-3 text-primary-foreground/90 hover:bg-primary-foreground/10 text-sm">
+          </Link>
+          <Link to="/login" className="block w-full text-left px-6 py-3 text-primary-foreground/90 hover:bg-primary-foreground/10 text-sm">
             Login
-          </button>
+          </Link>
           <div className="border-t border-primary-foreground/10 mt-2 pt-2 px-6">
             <p className="text-primary-foreground/50 text-xs font-bold tracking-wider mb-2">ABOUT US</p>
             {aboutItems.map((item) => (
