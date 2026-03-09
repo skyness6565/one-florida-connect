@@ -40,7 +40,7 @@ const Dashboard = () => {
       setUserId(session.user.id);
       const { data } = await supabase.from("profiles").select("*").eq("user_id", session.user.id).maybeSingle();
       setProfile(data);
-      const { data: pinData } = await (supabase as any).from("user_pins").select("id").eq("user_id", session.user.id).maybeSingle();
+      const { data: pinData } = await supabase.from("user_pins").select("id").eq("user_id", session.user.id).maybeSingle();
       setHasPin(!!pinData);
       setLoading(false);
     };
