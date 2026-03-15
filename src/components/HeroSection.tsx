@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-bank.jpg";
 
 const HeroSection = () => {
@@ -13,12 +14,12 @@ const HeroSection = () => {
           We do banking differently. We believe that people come first, and that everyone deserves a great experience every step of the way.
         </p>
         <div className="flex gap-4 mt-8 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-          <button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold px-8 py-3 rounded-lg transition-colors">
+          <Link to="/register" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold px-8 py-3 rounded-lg transition-colors">
             Open Account
-          </button>
-          <button className="border-2 border-background text-background hover:bg-background/10 font-semibold px-8 py-3 rounded-lg transition-colors">
+          </Link>
+          <Link to="/login" className="border-2 border-background text-background hover:bg-background/10 font-semibold px-8 py-3 rounded-lg transition-colors">
             Learn More
-          </button>
+          </Link>
         </div>
       </div>
     </section>

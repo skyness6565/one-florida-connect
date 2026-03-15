@@ -39,8 +39,8 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="bg-foreground">
         <div className="section-padding flex justify-between items-center py-4">
-          <button className="text-background font-bold hover:text-secondary transition-colors">Login</button>
-          <button className="text-background font-bold hover:text-secondary transition-colors">Open Account</button>
+          <a href="/login" className="text-background font-bold hover:text-secondary transition-colors">Login</a>
+          <a href="/register" className="text-background font-bold hover:text-secondary transition-colors">Open Account</a>
         </div>
       </div>
     </footer>

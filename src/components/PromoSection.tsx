@@ -13,9 +13,9 @@ const PromoSection = () => {
             For a limited time, get a $300 bonus when you open any new checking account! Experience fee-free banking with competitive interest rates, a top-rated mobile app, and the personal touch of a local Florida bank.
           </p>
           <p className="text-muted-foreground text-sm mb-8">*Select "Learn More" to see important offer details.</p>
-          <button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-colors">
+          <a href="/register" className="inline-block bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-colors">
             Learn More
-          </button>
+          </a>
         </div>
         <img src={branchImg} alt="One Florida Bank modern branch" className="rounded-xl shadow-lg w-full h-[350px] object-cover" />
       </div>
