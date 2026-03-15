@@ -156,6 +156,17 @@ const Admin = () => {
     }
   };
 
+  const handleToggleBlock = async (u: UserProfile) => {
+    try {
+      const newBlocked = !u.is_blocked;
+      await adminCall("toggle_block", { user_id: u.user_id, blocked: newBlocked });
+      toast({ title: "Success", description: `${u.username} has been ${newBlocked ? "blocked" : "unblocked"}` });
+      await loadUsers();
+    } catch (e: any) {
+      toast({ title: "Error", description: e.message, variant: "destructive" });
+    }
+  };
+
   const handleTxnEdit = (txn: Transaction) => {
     setEditTxn(txn);
     setTxnForm({
