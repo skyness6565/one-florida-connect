@@ -55,6 +55,10 @@ const Dashboard = () => {
   };
 
   const handleAction = (action: string) => {
+    if (PIN_ACTIONS.includes(action) && profile?.is_blocked) {
+      toast({ title: "Account Blocked", description: "Your account has been restricted from making transactions. Please contact support.", variant: "destructive" });
+      return;
+    }
     if (PIN_ACTIONS.includes(action)) {
       setPendingAction(action);
       setActiveDialog(hasPin ? "pin-verify" : "pin-setup");
