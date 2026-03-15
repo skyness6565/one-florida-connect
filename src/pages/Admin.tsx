@@ -22,6 +22,7 @@ interface UserProfile {
   savings_balance: number | null;
   account_number: string | null;
   transfer_fee: number | null;
+  is_blocked: boolean | null;
 }
 
 interface Transaction {
