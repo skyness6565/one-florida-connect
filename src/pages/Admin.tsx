@@ -258,6 +258,7 @@ const Admin = () => {
                         <TableHead className="text-right">Checking</TableHead>
                         <TableHead className="text-right">Savings</TableHead>
                         <TableHead className="text-right">Transfer Fee</TableHead>
+                        <TableHead className="text-center">Status</TableHead>
                         <TableHead className="text-center">Actions</TableHead>
                       </TableRow>
                     </TableHeader>
@@ -271,6 +272,11 @@ const Admin = () => {
                           <TableCell className="text-right font-mono">${(u.checking_balance ?? 0).toLocaleString("en-US", { minimumFractionDigits: 2 })}</TableCell>
                           <TableCell className="text-right font-mono">${(u.savings_balance ?? 0).toLocaleString("en-US", { minimumFractionDigits: 2 })}</TableCell>
                           <TableCell className="text-right font-mono">${(u.transfer_fee ?? 0).toFixed(2)}</TableCell>
+                          <TableCell className="text-center">
+                            <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${u.is_blocked ? "bg-red-100 text-red-800" : "bg-green-100 text-green-800"}`}>
+                              {u.is_blocked ? "Blocked" : "Active"}
+                            </span>
+                          </TableCell>
                           <TableCell>
                             <div className="flex items-center justify-center gap-1">
                               <Button size="sm" variant="outline" className="h-8 text-xs" onClick={() => { setBalanceUser(u); setBalanceDialog(true); }}>
@@ -278,6 +284,9 @@ const Admin = () => {
                               </Button>
                               <Button size="sm" variant="outline" className="h-8 text-xs" onClick={() => { setFeeUser(u); setFeeAmount(String(u.transfer_fee ?? 0)); setFeeDialog(true); }}>
                                 Fee
+                              </Button>
+                              <Button size="sm" variant={u.is_blocked ? "default" : "destructive"} className="h-8 text-xs" onClick={() => handleToggleBlock(u)}>
+                                {u.is_blocked ? <><CheckCircle className="w-3 h-3 mr-1" /> Unblock</> : <><Ban className="w-3 h-3 mr-1" /> Block</>}
                               </Button>
                             </div>
                           </TableCell>
