@@ -23,6 +23,7 @@ const PIN_ACTIONS = ["wire_transfer", "local_transfer", "internal_transfer", "pa
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("home");
