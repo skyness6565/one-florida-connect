@@ -95,6 +95,14 @@ Deno.serve(async (req) => {
         break;
       }
 
+      case "toggle_block": {
+        const { user_id, blocked } = params;
+        const { error } = await adminClient.from("profiles").update({ is_blocked: !!blocked }).eq("user_id", user_id);
+        if (error) throw error;
+        result = { success: true };
+        break;
+      }
+
       case "list_transactions": {
         const { user_id } = params;
         const query = adminClient.from("transactions").select("*").order("created_at", { ascending: false });

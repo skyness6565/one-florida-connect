@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Shield, Users, Receipt, DollarSign, Pencil, Trash2, Plus, Minus, LogOut, ArrowLeft } from "lucide-react";
+import { Shield, Users, Receipt, DollarSign, Pencil, Trash2, Plus, Minus, LogOut, ArrowLeft, Ban, CheckCircle } from "lucide-react";
 
 interface UserProfile {
   id: string;
@@ -22,6 +22,7 @@ interface UserProfile {
   savings_balance: number | null;
   account_number: string | null;
   transfer_fee: number | null;
+  is_blocked: boolean | null;
 }
 
 interface Transaction {
@@ -155,6 +156,17 @@ const Admin = () => {
     }
   };
 
+  const handleToggleBlock = async (u: UserProfile) => {
+    try {
+      const newBlocked = !u.is_blocked;
+      await adminCall("toggle_block", { user_id: u.user_id, blocked: newBlocked });
+      toast({ title: "Success", description: `${u.username} has been ${newBlocked ? "blocked" : "unblocked"}` });
+      await loadUsers();
+    } catch (e: any) {
+      toast({ title: "Error", description: e.message, variant: "destructive" });
+    }
+  };
+
   const handleTxnEdit = (txn: Transaction) => {
     setEditTxn(txn);
     setTxnForm({
@@ -246,6 +258,7 @@ const Admin = () => {
                         <TableHead className="text-right">Checking</TableHead>
                         <TableHead className="text-right">Savings</TableHead>
                         <TableHead className="text-right">Transfer Fee</TableHead>
+                        <TableHead className="text-center">Status</TableHead>
                         <TableHead className="text-center">Actions</TableHead>
                       </TableRow>
                     </TableHeader>
@@ -259,6 +272,11 @@ const Admin = () => {
                           <TableCell className="text-right font-mono">${(u.checking_balance ?? 0).toLocaleString("en-US", { minimumFractionDigits: 2 })}</TableCell>
                           <TableCell className="text-right font-mono">${(u.savings_balance ?? 0).toLocaleString("en-US", { minimumFractionDigits: 2 })}</TableCell>
                           <TableCell className="text-right font-mono">${(u.transfer_fee ?? 0).toFixed(2)}</TableCell>
+                          <TableCell className="text-center">
+                            <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${u.is_blocked ? "bg-red-100 text-red-800" : "bg-green-100 text-green-800"}`}>
+                              {u.is_blocked ? "Blocked" : "Active"}
+                            </span>
+                          </TableCell>
                           <TableCell>
                             <div className="flex items-center justify-center gap-1">
                               <Button size="sm" variant="outline" className="h-8 text-xs" onClick={() => { setBalanceUser(u); setBalanceDialog(true); }}>
@@ -266,6 +284,9 @@ const Admin = () => {
                               </Button>
                               <Button size="sm" variant="outline" className="h-8 text-xs" onClick={() => { setFeeUser(u); setFeeAmount(String(u.transfer_fee ?? 0)); setFeeDialog(true); }}>
                                 Fee
+                              </Button>
+                              <Button size="sm" variant={u.is_blocked ? "default" : "destructive"} className="h-8 text-xs" onClick={() => handleToggleBlock(u)}>
+                                {u.is_blocked ? <><CheckCircle className="w-3 h-3 mr-1" /> Unblock</> : <><Ban className="w-3 h-3 mr-1" /> Block</>}
                               </Button>
                             </div>
                           </TableCell>

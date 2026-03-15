@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Settings, Bell, Home, MessageCircle, CreditCard, ArrowUpRight, ArrowDownLeft, RefreshCw, Receipt, UserPlus, FileText, BarChart3, Globe, ChevronDown, LogOut, Wallet, PiggyBank, Zap, ShieldCheck, Star, Clock } from "lucide-react";
 import type { Tables } from "@/integrations/supabase/types";
+import { useToast } from "@/hooks/use-toast";
 import PinDialog from "@/components/dashboard/PinDialog";
 import TransferDialog from "@/components/dashboard/TransferDialog";
 import ReceiptDialog from "@/components/dashboard/ReceiptDialog";
@@ -22,6 +23,7 @@ const PIN_ACTIONS = ["wire_transfer", "local_transfer", "internal_transfer", "pa
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("home");
@@ -55,6 +57,10 @@ const Dashboard = () => {
   };
 
   const handleAction = (action: string) => {
+    if (PIN_ACTIONS.includes(action) && profile?.is_blocked) {
+      toast({ title: "Account Blocked", description: "Your account has been restricted from making transactions. Please contact support.", variant: "destructive" });
+      return;
+    }
     if (PIN_ACTIONS.includes(action)) {
       setPendingAction(action);
       setActiveDialog(hasPin ? "pin-verify" : "pin-setup");
