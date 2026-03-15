@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Settings, Bell, Home, MessageCircle, CreditCard, ArrowUpRight, ArrowDownLeft, RefreshCw, Receipt, UserPlus, FileText, BarChart3, Globe, ChevronDown, LogOut, Wallet, PiggyBank, Zap, ShieldCheck, Star, Clock } from "lucide-react";
 import type { Tables } from "@/integrations/supabase/types";
+import { useToast } from "@/hooks/use-toast";
 import PinDialog from "@/components/dashboard/PinDialog";
 import TransferDialog from "@/components/dashboard/TransferDialog";
 import ReceiptDialog from "@/components/dashboard/ReceiptDialog";
