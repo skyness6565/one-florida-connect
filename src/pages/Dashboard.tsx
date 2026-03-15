@@ -57,7 +57,7 @@ const Dashboard = () => {
   };
 
   const handleAction = (action: string) => {
-    if (PIN_ACTIONS.includes(action) && profile?.is_blocked) {
+    if (PIN_ACTIONS.includes(action) && (profile as any)?.is_blocked) {
       toast({ title: "Account Blocked", description: "Your account has been restricted from making transactions. Please contact support.", variant: "destructive" });
       return;
     }
