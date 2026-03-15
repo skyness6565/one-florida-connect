@@ -10,7 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { Shield, Users, Receipt, DollarSign, Pencil, Trash2, Plus, Minus, LogOut, ArrowLeft } from "lucide-react";
+import { Shield, Users, Receipt, DollarSign, Pencil, Trash2, Plus, Minus, LogOut, ArrowLeft, Ban, CheckCircle } from "lucide-react";
 
 interface UserProfile {
   id: string;
