@@ -2,10 +2,10 @@ import { MapPin, Phone, Headphones, Video } from "lucide-react";
 import businessImg from "@/assets/business-banker.jpg";
 
 const contactItems = [
-  { icon: MapPin, title: "Routing #", detail: "251480576" },
-  { icon: Phone, title: "Branch Hours:", detail: "Mon - Thurs: 8:30 a.m.-5:00 p.m.\nFriday: 8:30 a.m.-6:00 p.m.\nSaturday: 9:00 a.m.-1:00 p.m." },
-  { icon: Headphones, title: "support@oneflorida.bank", detail: "Customer Service" },
-  { icon: Video, title: "Video Connect", detail: "Chat Virtually" },
+  { icon: MapPin, title: "Our Address", detail: "1425 Brickell Ave, Suite 800\nMiami, FL 33131" },
+  { icon: Phone, title: "WhatsApp", detail: "+1 (475) 265-9996" },
+  { icon: Headphones, title: "Email Us", detail: "gazinggsunn@gmail.com" },
+  { icon: Video, title: "Branch Hours", detail: "Mon - Fri: 8:30 a.m. - 5:00 p.m.\nSaturday: 9:00 a.m. - 1:00 p.m." },
 ];
 
 const ContactSection = () => {
