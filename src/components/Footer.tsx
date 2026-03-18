@@ -31,7 +31,7 @@ const Footer = () => {
             ))}
           </div>
           <div className="border-t border-primary-foreground/10 mt-12 pt-8 text-center">
-            <p className="text-primary-foreground/50 text-sm">© 2026 One Florida Bank. All rights reserved. Member FDIC. Equal Housing Lender.</p>
+            <p className="text-primary-foreground/50 text-sm">© 2021 One Florida Bank. All rights reserved. Member FDIC. Equal Housing Lender.</p>
           </div>
         </div>
       </div>
