@@ -16,6 +16,9 @@ import AlertsPanel from "@/components/dashboard/AlertsPanel";
 import LoansDialog from "@/components/dashboard/LoansDialog";
 import InvestmentsDialog from "@/components/dashboard/InvestmentsDialog";
 import SupportDialog from "@/components/dashboard/SupportDialog";
+import SettingsPanel from "@/components/dashboard/SettingsPanel";
+import ProfileEditor from "@/components/dashboard/ProfileEditor";
+import NotificationsPanel from "@/components/dashboard/NotificationsPanel";
 
 type Profile = Tables<"profiles">;
 
@@ -34,6 +37,7 @@ const Dashboard = () => {
   const [receiptData, setReceiptData] = useState<any>(null);
   const [userId, setUserId] = useState("");
   const [statementType, setStatementType] = useState<"savings" | "checking">("checking");
+  const [settingsView, setSettingsView] = useState<string | null>(null);
 
   useEffect(() => {
     const init = async () => {
@@ -254,16 +258,47 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="px-4 mt-8 mb-4">
-              <button onClick={handleLogout} className="flex items-center gap-2 text-destructive text-sm font-medium hover:underline">
-                <LogOut className="w-4 h-4" /> Sign Out
-              </button>
-            </div>
           </>
         )}
 
         {activeTab === "history" && (
           <TransactionHistory userId={userId} onViewReceipt={(txn) => { setReceiptData(txn); setActiveDialog("receipt"); }} />
+        )}
+
+        {activeTab === "settings" && settingsView === null && (
+          <SettingsPanel
+            onNavigate={(view) => {
+              if (view === "customer_service") {
+                // Trigger JivoChat
+                if ((window as any).jivo_api) {
+                  (window as any).jivo_api.open();
+                }
+                return;
+              }
+              if (view === "email") {
+                window.location.href = "mailto:gazinggsunn@gmail.com";
+                return;
+              }
+              setSettingsView(view);
+            }}
+            onLogout={handleLogout}
+          />
+        )}
+
+        {activeTab === "settings" && settingsView === "profile" && profile && (
+          <ProfileEditor
+            profile={profile}
+            userId={userId}
+            onBack={() => setSettingsView(null)}
+            onUpdate={() => { refreshProfile(); }}
+          />
+        )}
+
+        {activeTab === "settings" && settingsView === "notifications" && (
+          <NotificationsPanel
+            userId={userId}
+            onBack={() => setSettingsView(null)}
+          />
         )}
 
         {activeTab === "cards" && (
@@ -297,7 +332,7 @@ const Dashboard = () => {
         ].map(({ icon: Icon, label, key }) => (
           <button key={key} onClick={() => {
             if (key === "alerts_tab") setActiveDialog("alerts");
-            else if (key === "settings") handleLogout();
+            else if (key === "settings") { setActiveTab("settings"); setSettingsView(null); }
             else setActiveTab(key);
           }} className={`flex flex-col items-center gap-1 px-3 py-1 ${activeTab === key ? "text-primary" : "text-muted-foreground"}`}>
             <Icon className="w-5 h-5" /><span className="text-[10px] font-medium">{label}</span>
