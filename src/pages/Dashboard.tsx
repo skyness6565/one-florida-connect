@@ -258,11 +258,6 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="px-4 mt-8 mb-4">
-              <button onClick={handleLogout} className="flex items-center gap-2 text-destructive text-sm font-medium hover:underline">
-                <LogOut className="w-4 h-4" /> Sign Out
-              </button>
-            </div>
           </>
         )}
 
