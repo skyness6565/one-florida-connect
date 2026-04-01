@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Star } from "lucide-react";
 
 const testimonials = [
-  { text: "I am impressed with the customer service and speed of payout. One Florida Bank truly cares about their customers.", name: "Ralph Morris", role: "Business Owner" },
-  { text: "Switching to One Florida Bank was the best financial decision I've made. Their rates are unbeatable and the mobile app is fantastic.", name: "Maria Santos", role: "Account Holder" },
+  { text: "I am impressed with the customer service and speed of payout. Onprofitunity truly cares about their customers.", name: "Ralph Morris", role: "Business Owner" },
+  { text: "Switching to Onprofitunity was the best financial decision I've made. Their rates are unbeatable and the mobile app is fantastic.", name: "Maria Santos", role: "Account Holder" },
   { text: "The team helped me secure a mortgage with incredible terms. They walked me through every step of the process.", name: "James Thompson", role: "Homeowner" },
 ];
 

@@ -17,7 +17,7 @@ const PromoSection = () => {
             Learn More
           </a>
         </div>
-        <img src={branchImg} alt="One Florida Bank modern branch" className="rounded-xl shadow-lg w-full h-[350px] object-cover" />
+        <img src={branchImg} alt="Onprofitunity modern branch" className="rounded-xl shadow-lg w-full h-[350px] object-cover" />
       </div>
     </section>
   );

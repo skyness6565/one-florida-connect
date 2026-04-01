@@ -14,7 +14,7 @@ const PositivesSection = () => {
     <section className="py-20">
       <div className="section-padding">
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-          Why Choose One Florida Bank?
+          Why Choose Onprofitunity?
         </h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12 text-lg">
           We're not just another bank. We're your neighbors, your partners, and your biggest advocates for financial success.

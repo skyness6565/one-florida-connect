@@ -17,7 +17,7 @@ const PrivacySection = () => {
           Your Security & Privacy Matter
         </h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12 text-lg">
-          At One Florida Bank, protecting your personal and financial information is our highest priority. Here's how we keep you safe.
+          At Onprofitunity, protecting your personal and financial information is our highest priority. Here's how we keep you safe.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {privacyFeatures.map(({ icon: Icon, title, desc }) => (

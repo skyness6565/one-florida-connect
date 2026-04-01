@@ -14,12 +14,12 @@ const MobileAppSection = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl max-w-sm mx-auto">
-              <img src={mobileImg} alt="One Florida Bank mobile app" className="w-full h-[450px] object-cover" />
+              <img src={mobileImg} alt="Onprofitunity mobile app" className="w-full h-[450px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="flex items-center gap-2">
                   <Smartphone className="w-5 h-5 text-background" />
-                  <span className="text-background font-heading font-bold">One Florida App</span>
+                  <span className="text-background font-heading font-bold">Onprofitunity App</span>
                 </div>
               </div>
             </div>
@@ -31,7 +31,7 @@ const MobileAppSection = () => {
               Bank Anywhere, Anytime
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Take One Florida Bank with you wherever you go. Deposit checks, transfer funds, pay bills, and monitor your accounts — all from our award-winning mobile app. Available for free on iOS and Android.
+              Take Onprofitunity with you wherever you go. Deposit checks, transfer funds, pay bills, and monitor your accounts — all from our award-winning mobile app. Available for free on iOS and Android.
             </p>
 
             <div className="space-y-4 mb-10">
