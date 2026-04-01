@@ -92,7 +92,7 @@ const Register = () => {
             OF
           </div>
           <h1 className="font-heading text-4xl font-bold text-primary-foreground mb-4">ONPROFITUNITY</h1>
-          <p className="text-primary-foreground/70 text-lg">Join thousands of Floridians who trust us with their financial future. Open your account in minutes.</p>
+          <p className="text-primary-foreground/70 text-lg">Join thousands of customers who trust us with their financial future. Open your account in minutes.</p>
         </div>
       </div>
 
