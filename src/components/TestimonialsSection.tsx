@@ -16,7 +16,7 @@ const TestimonialsSection = () => {
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-2">
           What Our Clients Say
         </h2>
-        <p className="text-muted-foreground mb-10">Trusted by thousands of customers across Florida</p>
+        <p className="text-muted-foreground mb-10">Trusted by thousands of customers worldwide</p>
 
         <div className="bg-muted rounded-2xl p-8 md:p-12">
           <div className="flex justify-center gap-1 mb-6">
