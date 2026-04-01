@@ -89,10 +89,10 @@ const Register = () => {
       <div className="hidden lg:flex lg:w-1/2 bank-gradient items-center justify-center p-12">
         <div className="max-w-md text-center">
           <div className="w-20 h-20 bg-bank-gold rounded-2xl flex items-center justify-center font-heading font-bold text-primary text-3xl mx-auto mb-8">
-            OF
+            OP
           </div>
-          <h1 className="font-heading text-4xl font-bold text-primary-foreground mb-4">ONE FLORIDA BANK</h1>
-          <p className="text-primary-foreground/70 text-lg">Join thousands of Floridians who trust us with their financial future. Open your account in minutes.</p>
+          <h1 className="font-heading text-4xl font-bold text-primary-foreground mb-4">ONPROFITUNITY</h1>
+          <p className="text-primary-foreground/70 text-lg">Join thousands of customers who trust us with their financial future. Open your account in minutes.</p>
         </div>
       </div>
 
@@ -100,8 +100,8 @@ const Register = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12">
         <div className="w-full max-w-md">
           <div className="lg:hidden flex items-center gap-3 mb-8 justify-center">
-            <div className="w-10 h-10 bg-bank-gold rounded-lg flex items-center justify-center font-heading font-bold text-primary text-lg">OF</div>
-            <span className="font-heading font-bold text-foreground text-xl">ONE FLORIDA BANK</span>
+            <div className="w-10 h-10 bg-bank-gold rounded-lg flex items-center justify-center font-heading font-bold text-primary text-lg">OP</div>
+            <span className="font-heading font-bold text-foreground text-xl">ONPROFITUNITY</span>
           </div>
 
           <h2 className="font-heading text-2xl font-bold text-foreground mb-1">Create Account</h2>

@@ -33,7 +33,7 @@ const HeroSection = () => {
           <div className="animate-fade-in-up hidden md:block" style={{ animationDelay: "0.3s" }}>
             <img
               src={dashboardMockup}
-              alt="One Florida Bank online banking dashboard"
+              alt="Onprofitunity online banking dashboard"
               width={1024}
               height={768}
               className="w-full max-w-lg mx-auto drop-shadow-2xl"

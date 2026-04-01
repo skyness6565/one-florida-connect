@@ -28,7 +28,7 @@ const TransferDialog = ({ open, type, profile, userId, onComplete, onClose }: Tr
   const [submitting, setSubmitting] = useState(false);
   const [isOwnAccount, setIsOwnAccount] = useState(false);
   const [form, setForm] = useState({
-    recipientName: "", recipientBank: "One Florida Bank", accountNumber: "",
+    recipientName: "", recipientBank: "Onprofitunity", accountNumber: "",
     routingCode: "", amount: "", note: "", direction: "checking_to_savings"
   });
 
@@ -70,7 +70,7 @@ const TransferDialog = ({ open, type, profile, userId, onComplete, onClose }: Tr
         await (supabase as any).from("transactions").insert({
           user_id: userId, transaction_id: txnId, type, category: "transfer", amount, fee: 0,
           recipient_name: isC2S ? "Savings Account" : "Checking Account",
-          recipient_bank: "One Florida Bank", recipient_account: profile.account_number,
+          recipient_bank: "Onprofitunity", recipient_account: profile.account_number,
           sender_account: profile.account_number, note: form.note || `${isC2S ? "Checking → Savings" : "Savings → Checking"}`, status: "completed"
         });
       } else {
@@ -78,7 +78,7 @@ const TransferDialog = ({ open, type, profile, userId, onComplete, onClose }: Tr
         await supabase.from("profiles").update({ checking_balance: newBalance } as any).eq("user_id", userId);
         await (supabase as any).from("transactions").insert({
           user_id: userId, transaction_id: txnId, type, category: "transfer", amount, fee,
-          recipient_name: form.recipientName, recipient_bank: form.recipientBank || "One Florida Bank",
+          recipient_name: form.recipientName, recipient_bank: form.recipientBank || "Onprofitunity",
           recipient_account: form.accountNumber, routing_code: form.routingCode,
           sender_account: profile.account_number, note: form.note, status: "completed"
         });
@@ -92,13 +92,13 @@ const TransferDialog = ({ open, type, profile, userId, onComplete, onClose }: Tr
       const txnData = {
         transaction_id: txnId, type, amount, fee, total, status: "completed",
         recipient_name: isOwnAccount ? (form.direction === "checking_to_savings" ? "Savings Account" : "Checking Account") : form.recipientName,
-        recipient_bank: form.recipientBank || "One Florida Bank", recipient_account: form.accountNumber || profile.account_number,
+        recipient_bank: form.recipientBank || "Onprofitunity", recipient_account: form.accountNumber || profile.account_number,
         routing_code: form.routingCode, sender_name: profile.full_name || profile.username,
         sender_account: profile.account_number, note: form.note, created_at: new Date().toISOString()
       };
 
       toast({ title: "Transfer Successful", description: `$${amount.toFixed(2)} sent successfully` });
-      setForm({ recipientName: "", recipientBank: "One Florida Bank", accountNumber: "", routingCode: "", amount: "", note: "", direction: "checking_to_savings" });
+      setForm({ recipientName: "", recipientBank: "Onprofitunity", accountNumber: "", routingCode: "", amount: "", note: "", direction: "checking_to_savings" });
       setStep("form");
       setIsOwnAccount(false);
       onComplete(txnData);

@@ -120,7 +120,7 @@ const Dashboard = () => {
   ];
 
   const tips = [
-    { icon: PiggyBank, title: "Auto Save", desc: "Set a goal, save automatically with One Florida Bank's Auto Save." },
+    { icon: PiggyBank, title: "Auto Save", desc: "Set a goal, save automatically with Onprofitunity's Auto Save." },
     { icon: Wallet, title: "Budget", desc: "Check in with your budget and stay on top of spending." },
     { icon: Home, title: "Home Option", desc: "Your home purchase, refinance and insights under one roof." },
   ];
@@ -130,7 +130,7 @@ const Dashboard = () => {
       {/* Header */}
       <header className="bg-gradient-to-r from-primary to-secondary text-primary-foreground px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-2"><Globe className="w-4 h-4" /><span className="text-sm">English</span></div>
-        <div className="font-heading font-bold text-lg tracking-wide">ONE FLORIDA<span className="text-[hsl(var(--bank-gold))]">.</span></div>
+        <div className="font-heading font-bold text-lg tracking-wide">ONPROFITUNITY<span className="text-[hsl(var(--bank-gold))]">.</span></div>
         <div className="flex items-center gap-2">
           {profile?.avatar_url ? (
             <img src={profile.avatar_url} alt="Avatar" className="w-8 h-8 rounded-full object-cover border-2 border-primary-foreground/30" />
@@ -210,7 +210,7 @@ const Dashboard = () => {
             {/* Card Section */}
             <div className="px-4 mt-8">
               <button onClick={() => setShowCard(!showCard)} className="text-primary font-bold text-sm flex items-center gap-1">
-                One Florida Cards <ChevronDown className={`w-4 h-4 transition-transform ${showCard ? "rotate-180" : ""}`} />
+                Onprofitunity Cards <ChevronDown className={`w-4 h-4 transition-transform ${showCard ? "rotate-180" : ""}`} />
               </button>
               {showCard && (
                 <div className="mt-3 bg-gradient-to-br from-foreground via-foreground/95 to-foreground/80 rounded-2xl p-6 text-background relative overflow-hidden">
@@ -220,7 +220,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div className="absolute top-6 right-6 text-right">
-                    <span className="font-heading font-bold text-lg text-primary">ONE FLORIDA<span className="text-[hsl(var(--bank-gold))]">.</span></span>
+                    <span className="font-heading font-bold text-lg text-primary">ONPROFITUNITY<span className="text-[hsl(var(--bank-gold))]">.</span></span>
                   </div>
                   <p className="font-mono text-xl tracking-[0.2em] mb-6">{formatCardNumber(profile?.card_number)}</p>
                   <div className="flex justify-between items-end">
@@ -247,7 +247,7 @@ const Dashboard = () => {
 
             {/* Tips */}
             <div className="px-4 mt-8">
-              <p className="text-primary font-bold text-sm mb-4">One Florida Tips</p>
+              <p className="text-primary font-bold text-sm mb-4">Onprofitunity Tips</p>
               <div className="space-y-1">
                 {tips.map(({ icon: Icon, title, desc }) => (
                   <div key={title} className="flex items-start gap-4 py-4 border-b border-border last:border-0">
@@ -309,7 +309,7 @@ const Dashboard = () => {
                   {Array.from({ length: 9 }).map((_, i) => <div key={i} className="bg-[hsl(var(--bank-gold))]/80 rounded-[1px]" />)}
                 </div>
               </div>
-              <div className="absolute top-6 right-6"><span className="font-heading font-bold text-lg text-primary">ONE FLORIDA<span className="text-[hsl(var(--bank-gold))]">.</span></span></div>
+              <div className="absolute top-6 right-6"><span className="font-heading font-bold text-lg text-primary">ONPROFITUNITY<span className="text-[hsl(var(--bank-gold))]">.</span></span></div>
               <p className="font-mono text-xl tracking-[0.2em] mb-6">{formatCardNumber(profile?.card_number)}</p>
               <div className="flex justify-between items-end">
                 <div><p className="text-background/50 text-[10px] tracking-wider">CARD HOLDER</p><p className="font-semibold text-sm uppercase">{profile?.full_name || profile?.username}</p></div>

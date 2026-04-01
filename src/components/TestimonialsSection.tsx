@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Star } from "lucide-react";
 
 const testimonials = [
-  { text: "I am impressed with the customer service and speed of payout. One Florida Bank truly cares about their customers.", name: "Ralph Morris", role: "Business Owner" },
-  { text: "Switching to One Florida Bank was the best financial decision I've made. Their rates are unbeatable and the mobile app is fantastic.", name: "Maria Santos", role: "Account Holder" },
+  { text: "I am impressed with the customer service and speed of payout. Onprofitunity truly cares about their customers.", name: "Ralph Morris", role: "Business Owner" },
+  { text: "Switching to Onprofitunity was the best financial decision I've made. Their rates are unbeatable and the mobile app is fantastic.", name: "Maria Santos", role: "Account Holder" },
   { text: "The team helped me secure a mortgage with incredible terms. They walked me through every step of the process.", name: "James Thompson", role: "Homeowner" },
 ];
 
@@ -16,7 +16,7 @@ const TestimonialsSection = () => {
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-2">
           What Our Clients Say
         </h2>
-        <p className="text-muted-foreground mb-10">Trusted by thousands of customers across Florida</p>
+        <p className="text-muted-foreground mb-10">Trusted by thousands of customers worldwide</p>
 
         <div className="bg-muted rounded-2xl p-8 md:p-12">
           <div className="flex justify-center gap-1 mb-6">

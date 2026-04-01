@@ -52,12 +52,12 @@ const ReceiptDialog = ({ open, transaction, onClose }: ReceiptDialogProps) => {
           <div className="relative border-2 border-border rounded-xl p-6 m-4 overflow-hidden bg-background">
             {/* Watermark */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-[30deg] text-6xl font-black opacity-[0.03] whitespace-nowrap pointer-events-none select-none">
-              ONE FLORIDA BANK
+              ONPROFITUNITY
             </div>
 
             {/* Header */}
             <div className="text-center border-b-2 border-dashed border-border pb-4 mb-4">
-              <p className="font-heading font-extrabold text-xl text-primary tracking-wide">ONE FLORIDA<span className="text-[hsl(var(--bank-gold))]">.</span></p>
+              <p className="font-heading font-extrabold text-xl text-primary tracking-wide">ONPROFITUNITY<span className="text-[hsl(var(--bank-gold))]">.</span></p>
               <p className="text-xs text-muted-foreground mt-1">Official Transaction Receipt</p>
             </div>
 
@@ -93,7 +93,7 @@ const ReceiptDialog = ({ open, transaction, onClose }: ReceiptDialogProps) => {
               <div className="inline-block border-2 border-primary rounded-full px-4 py-1">
                 <p className="text-xs font-bold text-primary">DIGITALLY VERIFIED</p>
               </div>
-              <p className="font-[cursive] text-primary text-lg mt-2">One Florida Bank</p>
+              <p className="font-[cursive] text-primary text-lg mt-2">Onprofitunity</p>
               <p className="text-[10px] text-muted-foreground">Authorized Digital Signature</p>
               <p className="text-[10px] text-muted-foreground mt-2">This is a computer-generated receipt and does not require a physical signature.</p>
             </div>

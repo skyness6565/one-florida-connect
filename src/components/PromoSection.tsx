@@ -10,14 +10,14 @@ const PromoSection = () => {
             Get $300* With a Checking Account Built for You
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
-            For a limited time, get a $300 bonus when you open any new checking account! Experience fee-free banking with competitive interest rates, a top-rated mobile app, and the personal touch of a local Florida bank.
+            For a limited time, get a $300 bonus when you open any new checking account! Experience fee-free banking with competitive interest rates, a top-rated mobile app, and the personal touch of a trusted digital bank.
           </p>
           <p className="text-muted-foreground text-sm mb-8">*Select "Learn More" to see important offer details.</p>
           <a href="/register" className="inline-block bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-colors">
             Learn More
           </a>
         </div>
-        <img src={branchImg} alt="One Florida Bank modern branch" className="rounded-xl shadow-lg w-full h-[350px] object-cover" />
+        <img src={branchImg} alt="Onprofitunity modern branch" className="rounded-xl shadow-lg w-full h-[350px] object-cover" />
       </div>
     </section>
   );

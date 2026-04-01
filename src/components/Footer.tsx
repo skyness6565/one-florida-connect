@@ -13,8 +13,8 @@ const Footer = () => {
                 <Shield className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
-                <span className="font-heading font-bold text-primary-foreground text-lg leading-none block">One Florida</span>
-                <span className="text-primary-foreground/60 text-[10px] tracking-[0.2em]">BANK</span>
+                <span className="font-heading font-bold text-primary-foreground text-lg leading-none block">Onprofitunity</span>
+                <span className="text-primary-foreground/60 text-[10px] tracking-[0.2em]">BANKING</span>
               </div>
             </div>
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
@@ -65,7 +65,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 text-center">
-          <p className="text-primary-foreground/40 text-sm">© 2021 One Florida Bank. All rights reserved. Member FDIC. Equal Housing Lender.</p>
+          <p className="text-primary-foreground/40 text-sm">© 2021 Onprofitunity. All rights reserved. Member FDIC. Equal Housing Lender.</p>
         </div>
       </div>
     </footer>
