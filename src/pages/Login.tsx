@@ -44,7 +44,7 @@ const Login = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12">
         <div className="w-full max-w-md">
           <div className="lg:hidden flex items-center gap-3 mb-8 justify-center">
-            <div className="w-10 h-10 bg-bank-gold rounded-lg flex items-center justify-center font-heading font-bold text-primary text-lg">OF</div>
+            <div className="w-10 h-10 bg-bank-gold rounded-lg flex items-center justify-center font-heading font-bold text-primary text-lg">OP</div>
             <span className="font-heading font-bold text-foreground text-xl">ONPROFITUNITY</span>
           </div>
 
